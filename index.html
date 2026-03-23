@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Центр детско-юношеского туризма</title>
+
+    <!-- Для светлой темы -->
+    <link rel="icon" href="favicon-light.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
+    <!-- Для темной темы -->
+    <link rel="icon" href="favicon-dark.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
+
+
+    <link href="normalize.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/text_logo.png" alt="Логотип ЦДЮТ">
+        </div>
+        <div class="links">
+            <a href="#programs" class="text">Программы</a>
+            <a href="#" class="text">Контакты</a>
+        </div>
+    </header>
+
+
+    <img class="cover" src="images/обложка1.png" alt="Медвежонок, лисичка и бобренок сидят у костра рядом с палаткой">
+
+
+    <div class="container">
+        <div class="block-1">
+            <p class="h1"> Центр детско-юношеского туризма</p>
+            <p class="text"> Место, где каждый ребенок от 5 до 17 лет сможет получить базовые навыки туризма 
+            и ориентирования на местности</p>
+            <button class="btn1 prog-btn" data-target="programs">Записаться</button>
+        </div>
+        <div class="block-2">
+            <div class="image-wrapper">
+                <img src="images/главная1.png" alt="Дети у костра">
+            </div>
+            <div class="article-wrapper">
+                <p class="h2">Коротко о центре</p>
+                <p class="text"> Центр детско-юношеского туризма — это место, где экраны гаджетов сменяются шумом леса, а виртуальные 
+                    карты превращаются в настоящие компасы. Вместо скучных лекций — вязка узлов, установка палатки, спортивная карта и азимут. </p>
+                <p class="text"> Каждый выпускник Центра умеет брать на себя ответственность и 
+                    находить выход из любой ситуации. 
+                    Присоединяйтесь к нам, чтобы подарить ребенку приключения и дружбу на всю жизнь! </p>
+                <!-- <div class="button-wrapper">
+                    <button class="btn2">
+                        <p class="text"> О нас</p>
+                        <div class="icon"></div>
+                    </button>
+                </div>                 -->
+            </div>
+        </div>
+
+        <div class="headline2-block" id="programs">
+            <p class="h2">Программы</p>
+        </div>
+
+        <div class="block-4" id="programs-container">
+            
+        </div>
+
+        <!-- <div class="block-4" id="programs-container">
+            <div class="programm-card"> 
+                <div class="programm-card-cover">
+                    <div class="programm-card-tags">
+                        <div class="programm-card-tag text">5-8 лет</div>
+                        <div class="programm-card-tag text">Есть места</div>
+                    </div>
+                </div>
+                <div class="programm-card-title h3">«Туристские навыки: от выживания до культуры»</div>
+                <div class="programm-card-text text">Программа обучает дошкольников основам туристической деятельности, 
+                        способствуя всестороннему гармоничному развитию.</div>
+            </div>
+
+        </div> -->
+
+        <div class="block-5">
+
+            <p class="h2">Часто задаваемые вопросы</p>
+            
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="text">С какого возраста можно записываться в Центр?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="note">Мы принимаем детей с 5 до 17 лет включительно. Для каждой возрастной группы разработана своя программа: для малышей 
+                            (5–7 лет) — это игровые занятия по основам ориентирования на территории парка; для средней школы (8–12 лет) — 
+                            полный курс начальной туристской подготовки; для старших (13–17 лет) — углубленное изучение техники пешеходного туризма, топографии 
+                            и участие в соревнованиях.</p>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="text">Нужно ли ребенку иметь специальную физическую подготовку?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="note">Нет, специальная подготовка не требуется. Наш Центр создан именно для того, чтобы обучать детей с нуля. Главное — 
+                            это желание ребенка и отсутствие медицинских противопоказаний для занятий физкультурой. Мы учим всему постепенно: от правильной 
+                            укладки рюкзака до прохождения спортивных маршрутов.</p>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="text">Занятия проходят только в помещении или на улице?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="note">У нас комбинированный формат. Теоретические занятия (топография, устройство узлов, медицина) проходят в уютном учебном 
+                            классе. А практические занятия, которых в программе большинство, выезжают в городские парки, лесопарковые зоны и на загородные 
+                            полигоны. Сезонность не мешает нам заниматься: зимой мы осваиваем лыжный туризм и зимнее ориентирование.</p>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="text">Проводятся ли походы? Как часто?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="note">Да, походы — это главная награда для наших воспитанников. В зависимости от уровня группы мы проводим однодневные 
+                            походы выходного дня (раз в месяц для младших групп) и многодневные слеты и соревнования (2-3 раза в год для средних и старших групп).
+                            Все выезды строго контролируются инструкторами, имеющими лицензию на проведение детских туристских мероприятий.</p>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="text">Как обеспечивается безопасность детей на занятиях и в походах?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="note">Безопасность — наш главный приоритет. Все инструкторы Центра имеют профильное педагогическое образование и допуск 
+                            к работе с детьми, а также действующие квалификации «Спасатель» или «Инструктор детско-юношеского туризма». На каждых 8–10 
+                            детей приходится один взрослый инструктор. Во время походов мы всегда имеем при себе укомплектованную медицинскую аптечку и 
+                            средства связи (рации, спутниковые трекеры). Маршруты согласованы с МЧС.</p>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="text">Есть ли форма одежды или символика Центра?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="note">Да, для создания командного духа мы рекомендуем приобрести фирменную бейсболку и футболку Центра, 
+                            но это не обязательно.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="text">Сколько стоит обучение в Центре?</span>
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="note">Мы проводим обучение на основе бюджетных ассигнований. Для записи на программу необходимо 
+                            иметь сертификат дополнительного образования.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-logo">
+            <img src="images/text_logo2.png" alt="Версия логотипа Центра с текстом">
+        </div>
+        <div class="footer-links">
+            <a href="#" class="text"> Программы</a>  
+            <a href="#" class="text"> Контакты</a>
+        </div>
+        <div class="footer-contacts"> 
+            <div class="contact"> 
+                <img class="icon" src="images/телефон.png" alt="Телефон">
+                <p class="text">+7 (34668) 61106, доб. 60</p>
+            </div>
+            
+            <div class="contact"> 
+                <img class="icon" src="images/email.png" alt="Email">
+                <p class="text">tsdut@mail.ru</p>
+            </div>
+
+            <div class="contact"> 
+                <img class="icon" src="images/почта.png" alt="Почта">
+                <p class="text">Ханты-Мансийский автономный округ – Югра, г.Радужный, 
+            тер. Аэропорт, стр. 2</p>
+            </div>
+
+        </div>
+        <div class="footer-up">
+            <img src="images/наверх.png" alt="Кнопка наверх">
+        </div>
+        <div class="footer-copiright">
+            <p class="note">© 2025 <br> Cогласие на обработку персональных данных </p>
+        </div>
+    </footer>
+
+
+ <script>
+    document.querySelectorAll('.accordion-item').forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    const icon = item.querySelector('.accordion-icon');
+    
+    header.addEventListener('click', () => {
+        item.classList.toggle('active');
+        
+        // Тернарный оператор для смены иконки
+        icon.style.backgroundImage = item.classList.contains('active') 
+            ? "url('images/минус.png')" 
+            : "url('images/плюс.png')";
+    });
+});
+
+document.querySelectorAll('.prog-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

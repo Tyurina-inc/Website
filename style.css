@@ -1,0 +1,595 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+    font-family: "Brusnika";
+    src: url("/fonts/Brusnika-normal_version.otf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+/*ЦВЕТА
+    зеленый #9AC972
+    красный #B32D00
+    оранжевый #F29D06
+    синий #4E66A6
+
+    черный #20272C
+    темно-серый #8B8B8B
+    светло-серый #CCCBCB
+    белый #FFFFFF
+*/
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*СТИЛИ ТЕКСТА*/
+
+.h1 {
+    font-family: "Brusnika";
+    font-size: clamp(90px, 7.2vw, 140px);
+    margin: 0;
+    color: #4E66A6;
+    line-height: auto;
+}
+
+
+.h2 {
+    font-family: "Brusnika";
+    font-size: clamp(48px, 4.6vw, 70px);
+    margin: 0;
+    color: #F29D06;
+
+}
+
+
+.h3 {
+    font-family: "Montserrat";
+    font-size: clamp(20px, 1.4vw, 26px);
+    font-weight: 600;
+    margin: 0;
+    color: #20272C;
+    line-height: 130%;
+}
+
+.text {
+    font-family: "Montserrat";
+    font-size: clamp(18px, 1.1vw, 22px);
+    font-weight: 400;
+    margin: 0;
+    line-height: 150%;
+    color: #20272C;
+}
+
+.accent {
+    font-family: "Montserrat";
+    font-size: clamp(18px, 1.1vw, 22px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 150%;
+    color: #20272C;
+}
+
+.note {
+    font-family: "Montserrat";
+    font-size: clamp(16px, 0.8vw, 20px);
+    font-weight: 400;
+    margin: 0;
+    line-height: 150%;
+    color: #20272C;
+}
+
+a {
+    text-decoration: none; /* Убираем подчёркивание */
+}
+
+a:hover {
+    color:#4E66A6;
+}
+
+a:active {
+    color:#B32D00;
+}
+
+/*ОСНОВНОЙ БЛОК*/
+
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 6vw, 114px);
+}
+
+/*.grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(20px, 2vw, 36px);
+    border: solid;
+    margin-bottom: clamp(80px, 13vw, 250px);
+    align-items: flex-start;
+}*/
+
+
+/*ШАПКА И ПОДВАЛ*/
+
+header {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(20px, 2vw, 36px);
+    align-items: center;
+    height: clamp(64px, 5vw, 86px);
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 6vw, 114px);
+}
+
+.logo {
+    grid-column: span 2; 
+}
+
+.logo > img {
+  width: clamp(160px, 12.5vw, 240px);
+}
+
+/* ССЫЛКИ В ШАПКЕ */
+.links {
+    grid-column: 10 / span 3;
+    display: flex;
+    justify-content: flex-end;
+    gap: clamp(20px, 2vw, 36px);
+}
+
+
+
+
+footer {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding-left: clamp(16px, 6vw, 114px);
+    padding-right: clamp(16px, 6vw, 114px);
+    padding-top: clamp(32px, 2.1vw, 40px);
+    padding-bottom: clamp(10px, 0.7vw, 16px);
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    column-gap: clamp(20px, 2vw, 36px);
+    /* row-gap: clamp(10px, 0.7vw, 16px); */
+    align-content: space-between;
+    height: clamp(280px, 18vw, 346px);
+    background-color: #9AC972;
+}
+
+.footer-logo {
+    grid-column: 1 / span 3;
+    grid-row: 1 / 2;
+}
+
+.footer-logo > img {
+    width: clamp(180px, 17.6vw, 338px);
+    /* height: clamp(48px, 4.7vw, 90px); */
+}
+
+.footer-links {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 6px;
+    grid-column: 5 / span 3;
+    grid-row: 1 / 2;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 6px;
+    grid-column: 8 / span 4;
+    grid-row: 1 / 2;
+}
+
+.footer-contacts > .contact {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: clamp(16px, 1.1vw, 20px);
+}
+
+.contact > .icon {
+    width: clamp(20px, 1.8vw, 30px);
+    /* height: clamp(20px, 1.56vw, 30px); */
+    height: auto;
+    aspect-ratio: 1 / 1; /* квадратный контейнер */
+    object-fit: contain; /* изображение вписывается без искажений */
+    padding: 4px 0;
+}
+
+.footer-up {
+    display: flex;
+    justify-content: flex-end;
+    grid-column: 12 / span 1;
+    grid-row: 1 / 2; 
+}
+
+.footer-up > img {
+    width: clamp(52px, 4vw, 76px);
+    height: clamp(52px, 4vw, 76px);
+    /* height: clamp(48px, 4.7vw, 90px); */
+}
+
+.footer-copiright {
+    grid-column: 1 / span 12;
+    grid-row: 2 / 3;
+
+}
+
+/*КОМПОНЕНТЫ*/
+
+.cover {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+img {
+    max-width: 100%; /* изображение не выходит за пределы родителя */
+    display: block;  /* убирает лишние отступы снизу */
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/*БЛОКИ*/
+
+.headline2-block {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(20px, 2vw, 36px);
+    /* margin-bottom: clamp(80px, 13vw, 250px); */
+    align-items: flex-start;
+}
+
+.headline2-block {
+    margin-bottom: clamp(64px, 6vw, 90px);
+    grid-column: 1 / span 12;
+}
+
+.block-1 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    column-gap: clamp(20px, 2vw, 36px);
+    margin-bottom: clamp(80px, 13vw, 250px);
+    align-items: flex-start;
+    align-content: flex-start;
+    height: clamp(700px, 52vw, 994px);
+    text-align: center;
+    padding-top: clamp(110px, 7vw, 150px);
+}
+
+.block-1 > .h1 {
+    grid-column: 1 / 13;
+    }
+
+.block-1 > .text {
+    grid-column: 4 / span 6;
+}
+
+.block-1 > button {
+        grid-column: 5 / span 4;
+    }
+
+.block-2 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(20px, 2vw, 36px);
+    margin-bottom: clamp(80px, 13vw, 250px);
+    align-items: flex-start;
+    
+}
+
+.block-2 > .image-wrapper {
+    grid-column: 2 / span 4;
+}
+
+.image-wrapper > img {
+    border-radius: clamp(16px, 1.1vw, 20px); 
+}
+
+.block-2 > .article-wrapper {
+    grid-column: 7 / span 5;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: clamp(32px, 2.1vw, 40px);
+    margin-top: clamp(0px, 4vw, 90px);
+}
+
+.article-wrapper .button-wrapper {
+    width: clamp(252px, 17.6vw, 396px);
+    padding: 0;
+    margin: 0;
+}
+
+.block-4 {                                              /* ПРОГРАММЫ */
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(20px, 2vw, 36px);
+    row-gap: clamp(36px, 2.3vw, 44px);
+    margin-bottom: clamp(80px, 13vw, 250px);
+    align-items: flex-start;
+}
+
+.block-4 > .programm-card {
+    grid-column: span 4;
+    min-height: clamp(480px, 32vw, 572px);
+    display: flex;
+    flex-flow: column nowrap;
+    /* padding-bottom: clamp(10px, 0.7vw, 16px); */
+    border: 3px solid #4E66A6;
+    border-radius: clamp(16px, 1.1vw, 20px);
+    overflow: hidden;
+
+}
+
+.programm-card:hover {
+    border: 3px solid #F29D06;
+}
+
+.programm-card:active {
+    border: 3px solid #B32D00;
+}
+
+.programm-card > .programm-card-cover {
+    display: inline-flex;
+    align-items: flex-end;
+    width: 100%;
+    height: clamp(280px, 20vw, 380px);
+    margin-bottom: clamp(12px, 1.2vw, 20px);
+    padding-bottom: clamp(20px, 1.8vw, 26px);
+    background-image: url(images/programms/Туристенок.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.programm-card-tags {
+    display: flex;
+    gap: clamp(10px, 1vw, 15px);
+    justify-content: flex-start;
+    margin-left: clamp(16px, 2vw, 30px);
+}
+
+.programm-card-tags > .programm-card-tag {
+    padding: clamp(5px, 0.25vw, 8px) clamp(12px, 1.2vw, 18px);
+    border-radius: clamp(16px, 1.1vw, 20px);
+    color:#FFFFFF;
+    background-color: #9AC972;
+
+}
+
+.programm-card-tags > .programm-card-tag.no-spots {
+    background-color: #B32D00; /* цвет для статуса "Нет мест" */
+}
+
+/* Стили для загрузки и ошибок */
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: clamp(16px, 1.1vw, 18px);
+    color: #8B8B8B;
+}
+
+.error {
+    text-align: center;
+    padding: 40px;
+    font-size: clamp(16px, 1.1vw, 18px);
+    color: #B32D00;
+}
+
+
+
+.programm-card > .programm-card-title {
+    margin: 0 clamp(16px, 2vw, 30px) clamp(5px, 0.45vw, 10px) clamp(16px, 2vw, 30px);
+    height: clamp(48px, 4vw, 60px);
+    color: #4E66A6;
+}
+
+.programm-card > .programm-card-text {
+    margin: 0 clamp(16px, 2vw, 30px) 16px clamp(16px, 2vw, 30px);
+    min-height: clamp(72px, 6vw, 90px);
+}
+
+/* .block-3 {
+    height: clamp(710px, 53vw, 1010px);
+}
+
+.block-4 {
+    height: clamp(540px, 37vw, 718px);
+}
+
+.block-5 {
+    height: clamp(680px, 50vw, 962px);
+}
+
+.block-6 {
+    height: clamp(600px, 44vw, 854px);
+}
+
+.block-7 {
+    height: clamp(380px, 27vw, 512px);
+}
+
+.block-8 {
+    height: clamp(280px, 18vw, 346px);
+}
+
+.block-9 {
+    height: clamp(130px, 8.5vw, 162px);
+} */
+
+
+
+/*КНОПКИ*/
+
+.btn1 {
+    padding-top: clamp(10px, 0.7vw, 16px);
+    padding-bottom: clamp(10px, 0.7vw, 16px);
+    margin-top: clamp(36px, 2.3vw, 44px);
+    color: #FFFFFF;
+    font-family: "Montserrat";
+    font-size: clamp(18px, 1.3vw, 22px);
+    font-weight: 600;
+    background-color: #B32D00;
+    border-radius: clamp(16px, 1.1vw, 20px);
+    border: none;
+}
+
+.btn1:hover {
+    
+    background-color: #F29D06;
+}
+
+.btn1:active {
+    background-color: #F29D06;
+    outline: 3px solid #B32D00;
+    outline-offset: -3px
+}
+
+.btn2 {
+    display: inline-flex; /* Используем flexbox */
+    align-items: center; /* Центрируем текст и картинку по вертикали */
+    width: 100%;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+
+.btn2 > .text {
+    color:#4E66A6;
+}
+
+.btn2 > .icon {
+    width: clamp(110px, 7.6vw, 146px); /* Размер иконки */
+    height: auto;
+    background-image: url("images/стрелка-синяя.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: clamp(32px, 2.1vw, 40px);
+    min-height: clamp(20px, 1.3vw, 25px);
+}
+
+.btn2:hover .text {
+    color:#B32D00;
+}
+
+.btn2:hover > .icon {
+    width: clamp(110px, 7.6vw, 146px); /* Размер иконки */
+    height: auto;
+    background-image: url("images/стрелка-красная.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: clamp(32px, 2.1vw, 40px);
+    min-height: clamp(20px, 1.3vw, 25px);
+}
+
+.btn2:active .text {
+    color:#20272C;
+}
+
+.btn2:active > .icon {
+    width: clamp(110px, 7.6vw, 146px); /* Размер иконки */
+    height: auto;
+    background-image: url("images/стрелка-черная.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: clamp(32px, 2.1vw, 40px);
+    min-height: clamp(20px, 1.3vw, 25px);
+}
+
+/*АККОРДЕОН*/
+
+
+        .block-5 {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            column-gap: clamp(20px, 2vw, 36px);
+            row-gap: 0;
+            margin-bottom: clamp(80px, 13vw, 250px);
+            align-items: flex-start;
+        }
+        
+
+        .block-5 > .h2 {
+            margin-bottom: clamp(64px, 6vw, 90px);
+            grid-column: 1 / span 12;
+        }
+
+        
+        .accordion-item {
+            border: 3px solid #4E66A6;
+            /* grid-column: span 12; */
+            border-radius: clamp(16px, 1.1vw, 20px);
+            padding: clamp(16px, 1.1vw, 20px) clamp(20px, 1.8vw, 26px);
+            width: auto;
+            /* margin-bottom: clamp(10px, 1vw, 16px); */
+        }
+
+        .accordion-wrapper {
+            grid-column: span 12;
+            display: flex;
+            flex-flow: column nowrap;
+            gap: clamp(10px, 1vw, 16px);
+
+        }
+        
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            background: transparent;
+            border: none;
+            text-align: left;
+             padding: 0; /* сбрасываем padding кнопки */
+            margin: 0; /* сбрасываем margin кнопки */
+        }
+        .accordion-header > p {
+            width: 90%;
+        } 
+        
+        .accordion-icon {
+
+            width: clamp(22px, 1.67vw, 32px);
+            height: clamp(20px, 1.56vw, 30px);
+            background-image: url("images/плюс.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: background-image 0.3s ease-in;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        
+        .accordion-content > p {
+            padding-top: clamp(18px, 1.3vw, 22px);
+            width: 90%;
+        }  
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            transition: max-height 0.4s ease-in;
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+            transition: background-image 0.3s ease-out; 
+        } 
