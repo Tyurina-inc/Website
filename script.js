@@ -436,3 +436,31 @@ document.querySelectorAll('.accordion-item').forEach(item => {
         }
     });
 });
+
+
+// АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Выбираем все блоки, которые нужно анимировать
+    const animatedBlocks = document.querySelectorAll('.block-2, .headline2-block, .block-4, .block-5, .block-2-program');
+    
+    // Создаем наблюдатель
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Если блок появляется в области видимости
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Опционально: продолжаем наблюдать, чтобы анимация сработала только раз
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2, // Блок считается видимым, когда 20% его площади на экране
+        rootMargin: '0px 0px -50px 0px' // Небольшой отступ снизу
+    });
+    
+    // Начинаем наблюдение за каждым блоком
+    animatedBlocks.forEach(block => {
+        observer.observe(block);
+    });
+});

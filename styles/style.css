@@ -108,6 +108,7 @@ a:active {
     max-width: 1920px;
     margin: 0 auto;
     padding: 0 clamp(16px, 6vw, 114px);
+    overflow: hidden;
 }
 
 
@@ -285,11 +286,23 @@ img {
 
 .headline2-block {
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: clamp(20px, 2vw, 36px);
+    grid-template-columns: repeat(1fr);
+    /* gap: clamp(20px, 2vw, 36px); */
     align-items: flex-start;
     margin-bottom: clamp(64px, 6vw, 90px);
     grid-column: 1 / span 12;
+}
+
+.headline2-block {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.headline2-block.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* КАРТОЧКИ */

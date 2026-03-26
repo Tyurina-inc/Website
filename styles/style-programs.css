@@ -102,6 +102,18 @@
     align-items: flex-start;
 }
 
+.block-2-program {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.block-2-program.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .block-2-program > .image-wrapper-full {
     grid-column: 1 / span 12;
     border-radius: clamp(16px, 1.1vw, 20px);
