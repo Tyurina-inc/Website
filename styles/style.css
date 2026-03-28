@@ -19,6 +19,9 @@
     белый #FFFFFF
 */
 
+body {
+    overflow-x: hidden;
+}
 
 html {
     scroll-behavior: smooth;
@@ -232,20 +235,16 @@ footer {
     height: clamp(750px, 58.5vw, 1122px);
     z-index: -2;
     overflow: hidden;
-    border: solid;
 }
 
 .cover iframe {
-    /* position: absolute;
-    top: 50%;
+    position: absolute;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    height: 100%; /* Высота равна высоте родителя */
+    width: auto; /* Ширина автоматически подстраивается под пропорции */
+    transform: translateX(-50%); /* Центрирование по горизонтали */
     border: none;
-    transition: all 0.3s ease; */
-    width: 100%;
-    height: 100%;
-    border: none;
-    /* scrolling: "no"; */
     overflow: hidden;
 
 }
@@ -276,9 +275,7 @@ footer {
 
 .cover-2 > .child-2 {
     width: clamp(420px, 35.31vw, 678px);
-    height: clamp(310px, 25.83vw, 496px);
-    border: solid;
-    
+    height: clamp(310px, 25.83vw, 496px);    
 }
 
 .child-2 iframe {
@@ -376,6 +373,7 @@ img {
     border: 3px solid #4E66A6;
     border-radius: clamp(16px, 1.1vw, 20px);
     overflow: hidden;
+    transition: border-color 0.3s ease-in-out;
 
 }
 
@@ -505,6 +503,7 @@ img {
     background-position: center;
     margin-left: clamp(32px, 2.1vw, 40px);
     min-height: clamp(20px, 1.3vw, 25px);
+    transition: border-color 0.3s ease-in-out;
 }
 
 .btn2:hover .text {
@@ -562,11 +561,16 @@ img {
             border-radius: clamp(16px, 1.1vw, 20px);
             padding: clamp(16px, 1.1vw, 20px) clamp(20px, 1.8vw, 26px);
             width: auto;
+            transition: border-color 0.3s ease-in-out;
             /* margin-bottom: clamp(10px, 1vw, 16px); */
         }
 
         .accordion-item:hover {
             border: 3px solid #F29D06;
+        }
+
+        .accordion-item:active {
+            border: 3px solid #B32D00;
         }
 
         .accordion-wrapper {
@@ -734,6 +738,7 @@ img {
     font-weight: 400;
     line-height: 150%;
     color: #20272C;
+    transition: border-color 0.3s ease-in-out;
 }
 
 .checkbox-label input[type="checkbox"] {

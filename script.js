@@ -477,30 +477,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // //АДАПТИРОВАНИЕ ОБЛОЖКИ ПОД ЭКРАН
 
+document.addEventListener('DOMContentLoaded', () => {
+    resizeCoverIframe();
+});
 
-// function resizeIframe() {
-//     const iframe = document.querySelector('.cover iframe');
-//     const cover = document.querySelector('.cover');
-    
-//     if (!iframe || !cover) return;
-    
-//     const coverWidth = cover.offsetWidth;
-//     const coverHeight = cover.offsetHeight;
-//     const iframeWidth = 1920; // исходная ширина анимации
-//     const iframeHeight = 1122; // исходная высота анимации
-    
-//     // Вычисляем масштаб для заполнения контейнера
-//     const scaleX = coverWidth / iframeWidth;
-//     const scaleY = coverHeight / iframeHeight;
-//     const scale = Math.max(scaleX, scaleY); // или Math.min, в зависимости от задачи
-    
-//     iframe.style.width = `${iframeWidth}px`;
-//     iframe.style.height = `${iframeHeight}px`;
-//     iframe.style.transform = `translate(-50%, -50%) scale(${scale})`;
-// }
+window.addEventListener('load', resizeCoverIframe);
+window.addEventListener('resize', resizeCoverIframe);
 
-// window.addEventListener('load', resizeIframe);
-// window.addEventListener('resize', resizeIframe);
+function resizeCoverIframe() {
+    const iframe = document.querySelector('.cover iframe');
+    const cover = document.querySelector('.cover');
+    
+    if (!iframe || !cover) return;
+    
+    const coverHeight = cover.offsetHeight;
+    
+    // Исходные пропорции анимации (1920×1122)
+    const animationRatio = 1920 / 1122; // ≈ 1.71
+    
+    // Вычисляем ширину, сохраняя пропорции
+    const iframeWidth = coverHeight * animationRatio;
+    
+    iframe.style.height = `${coverHeight}px`;
+    iframe.style.width = `${iframeWidth}px`;
+    iframe.style.left = '50%';
+    iframe.style.transform = `translateX(-50%)`;
+}
 
 
 
