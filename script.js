@@ -475,26 +475,66 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function resizeIframe() {
-    const iframe = document.querySelector('.cover iframe');
-    const cover = document.querySelector('.cover');
-    
-    if (!iframe || !cover) return;
-    
-    const coverWidth = cover.offsetWidth;
-    const coverHeight = cover.offsetHeight;
-    const iframeWidth = 1920; // исходная ширина анимации
-    const iframeHeight = 1122; // исходная высота анимации
-    
-    // Вычисляем масштаб для заполнения контейнера
-    const scaleX = coverWidth / iframeWidth;
-    const scaleY = coverHeight / iframeHeight;
-    const scale = Math.max(scaleX, scaleY); // или Math.min, в зависимости от задачи
-    
-    iframe.style.width = `${iframeWidth}px`;
-    iframe.style.height = `${iframeHeight}px`;
-    iframe.style.transform = `translate(-50%, -50%) scale(${scale})`;
-}
+// //АДАПТИРОВАНИЕ ОБЛОЖКИ ПОД ЭКРАН
 
-window.addEventListener('load', resizeIframe);
-window.addEventListener('resize', resizeIframe);
+
+// function resizeIframe() {
+//     const iframe = document.querySelector('.cover iframe');
+//     const cover = document.querySelector('.cover');
+    
+//     if (!iframe || !cover) return;
+    
+//     const coverWidth = cover.offsetWidth;
+//     const coverHeight = cover.offsetHeight;
+//     const iframeWidth = 1920; // исходная ширина анимации
+//     const iframeHeight = 1122; // исходная высота анимации
+    
+//     // Вычисляем масштаб для заполнения контейнера
+//     const scaleX = coverWidth / iframeWidth;
+//     const scaleY = coverHeight / iframeHeight;
+//     const scale = Math.max(scaleX, scaleY); // или Math.min, в зависимости от задачи
+    
+//     iframe.style.width = `${iframeWidth}px`;
+//     iframe.style.height = `${iframeHeight}px`;
+//     iframe.style.transform = `translate(-50%, -50%) scale(${scale})`;
+// }
+
+// window.addEventListener('load', resizeIframe);
+// window.addEventListener('resize', resizeIframe);
+
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     resizeFireIframe();
+// });
+
+// window.addEventListener('load', resizeFireIframe);
+// window.addEventListener('resize', resizeFireIframe);
+
+// function resizeFireIframe() {
+//     const iframe = document.querySelector('#mascots-fire');
+//     const container = document.querySelector('.child-2');
+    
+//     if (!iframe || !container) return;
+    
+//     // Размеры контейнера
+//     const containerWidth = container.offsetWidth;
+//     const containerHeight = container.offsetHeight;
+    
+//     // Исходные размеры анимации (из вашего файла)
+//     // Теперь соответствуют размеру child-2 на 1920px
+//     const animationWidth = 642;   // ширина анимации в пикселях
+//     const animationHeight = 560;  // высота анимации в пикселях
+    
+//     // Вычисляем масштаб для полного заполнения контейнера
+//     const scaleX = containerWidth / animationWidth;
+//     const scaleY = containerHeight / animationHeight;
+//     const scale = Math.max(scaleX, scaleY); // cover режим
+    
+//     // Задаем фиксированные размеры iframe
+//     iframe.style.width = `${animationWidth}px`;
+//     iframe.style.height = `${animationHeight}px`;
+    
+//     // Масштабируем и центрируем
+//     iframe.style.transform = `translate(-50%, -50%) scale(${scale})`;
+// }
