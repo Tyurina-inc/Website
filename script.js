@@ -464,3 +464,28 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(block);
     });
 });
+
+
+function resizeIframe() {
+    const iframe = document.querySelector('.cover iframe');
+    const cover = document.querySelector('.cover');
+    
+    if (!iframe || !cover) return;
+    
+    const coverWidth = cover.offsetWidth;
+    const coverHeight = cover.offsetHeight;
+    const iframeWidth = 1920; // исходная ширина анимации
+    const iframeHeight = 1122; // исходная высота анимации
+    
+    // Вычисляем масштаб для заполнения контейнера
+    const scaleX = coverWidth / iframeWidth;
+    const scaleY = coverHeight / iframeHeight;
+    const scale = Math.max(scaleX, scaleY); // или Math.min, в зависимости от задачи
+    
+    iframe.style.width = `${iframeWidth}px`;
+    iframe.style.height = `${iframeHeight}px`;
+    iframe.style.transform = `translate(-50%, -50%) scale(${scale})`;
+}
+
+window.addEventListener('load', resizeIframe);
+window.addEventListener('resize', resizeIframe);
