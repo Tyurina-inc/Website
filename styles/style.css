@@ -230,9 +230,40 @@ footer {
     left: 0;
     width: 100%;
     height: clamp(750px, 58.5vw, 1122px);
-    z-index: -1;
+    z-index: -2;
     overflow: hidden;
 }
+
+.cover-2 {
+    position: absolute;
+    z-index: -1;
+    top: clamp(280px, 18.23vw, 350px);
+    left: calc(-1*clamp(258px, 19.8vw, 380px));
+    max-width: 2178px;
+    min-width: 113.5vw;
+    gap: 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.cover-2 > .child-1 {
+    width: clamp(650px, 53.85vw, 1034px);
+    height: clamp(430px, 35.63vw, 684px);
+    object-fit: contain;
+}
+
+.cover-2 img {
+    width: 100%;
+    height: 100%;
+}
+
+.cover-2 > .child-2 {
+    width: clamp(420px, 35.31vw, 678px);
+    height: clamp(310px, 25.83vw, 496px);
+    object-fit: contain;
+}
+
 
 .cover iframe {
     position: absolute;
@@ -242,6 +273,14 @@ footer {
     border: none;
     transition: all 0.3s ease;
 
+}
+
+.cover > .cover-child {
+  position: absolute;
+  top: 10px;    /* 10px от верхнего края */
+  left: -380px;  /* 20px от правого края */
+  border: solid;
+  width: 2178px;
 }
 
 img {

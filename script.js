@@ -141,6 +141,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+//ЗАГРУЗКА СТРАНИЦ ПРОГРАММ ИЗ БЭКА
+
+
+
+
+
+
+
+
 // ФОРМА ЗАПИСИ НА ПРОГРАММУ
 
 
