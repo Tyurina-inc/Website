@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Программа</title>
+    <title id="page-title">Программа | Центр туризма</title>
 
-    <!-- Для светлой темы -->
     <link rel="icon" href="favicon-light.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
-    <!-- Для темной темы -->
     <link rel="icon" href="favicon-dark.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
-
 
     <link href="styles/normalize.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/style-programs.css">
-
 </head>
 <body>
 
@@ -28,178 +24,43 @@
         </div>
     </header>
 
-    <div class="container">
-
-        <div class="headline2-block-program">  
-            <p class="h2">Туристенок</p>
-        </div>
-
-        <div class="block-1-program">
-            <p class="text">Программа обучает дошкольников основам туристической деятельности, способствуя всестороннему гармоничному развитию.</p>
-            <div class="programm-card-tags">
-                    <div class="programm-card-tag text">5-8 лет</div>
-                    <div class="programm-card-tag text">Есть места</div>
-            </div>
-            <button class="btn1 prog-btn" data-target="application-form-title">Записаться</button>
-        </div>
-
-        <div class="block-2-program">
-            <div class="image-wrapper-full">
-                <img src="images/programms/Туристенок.png" alt="*">
-            </div>   
-        </div>  
-
-        <div class="block-2-program">
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-                mollit anim id est laborum.</p>  
-            <p class="h3">Lorem ipsum</p>  
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-                mollit anim id est laborum.</p>  
-        </div>  
-
-        <div class="block-2-program">
-            <div class="image-wrapper-half">
-                <img src="images/programms/Туристенок1.png" alt="*">
-            </div> 
-            <div class="image-wrapper-half">
-                <img src="images/programms/Туристенок2.png" alt="*">
-            </div>   
-        </div>  
-
-        <div class="block-2-program">
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-                mollit anim id est laborum.</p>  
-            <p class="h3">Lorem ipsum</p>  
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-                mollit anim id est laborum.</p>  
-            <div class="button-wrapper">
-                    <button class="btn2">
-                        <p class="text"> Изучить документы</p>
-                        <div class="icon"></div>
-                    </button>
-            </div>  
-        </div>  
-
-        <div class="block-2-program">
-            <div class="warning">
-                <div class="icon"></div>
-                <p class="text">Для регистрации на&nbsp;программу необходимо иметь сертификат дополнительного образования</p>
-            </div>
-        </div>
-
-        <div class="block-2-program">
-            <div class="block-form">
-                <p class="form-title h2" id="application-form-title">Запишитесь на программу</p>
-                <p class="form-subtitle text">Мы свяжемся с Вами</p>
-                
-                <form id="application-form" class="application-form">
-                    <div class="form-field">
-                        <label for="lastname" class="form-label">Фамилия</label>
-                        <input type="text" id="lastname" name="lastname" 
-                            class="form-input" 
-                            placeholder="Иванов"
-                            required>
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="firstname" class="form-label">Имя</label>
-                        <input type="text" id="firstname" name="firstname" 
-                            class="form-input" 
-                            placeholder="Иван"
-                            required>
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="phone" class="form-label">Номер телефона</label>
-                        <input type="tel" id="phone" name="phone" 
-                            class="form-input" 
-                            placeholder="+7 800 123 45 67"
-                            required>
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" 
-                            class="form-input" 
-                            placeholder="ivanov@mail.ru"
-                            required>
-                        <div class="form-error" id="email-error"></div>
-                    </div>
-                    
-                    <div class="form-checkbox">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <span class="checkbox-custom"></span>
-                            <span class="checkbox-text">Я соглашаюсь на обработку персональных данных</span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="form-button btn1">Записаться</button>
-                </form>
-                
-                <div id="form-success" class="form-success" style="display: none;">
-                    <p class="h3">Заявка успешно отправлена!</p>
-                </div>
-            </div>
-
-            <div class="mascots-image-wrapper">
-                <img src="images/маскоты-запись.png" alt="Медвежонок, лисичка и бобренок идут в гору">
-            </div>
-        </div>  
-
-
+    <div class="container" id="program-page-container">
+        <!-- Контент будет загружаться динамически -->
+        <div class="loading">Загрузка программы...</div>
     </div>
-
-
-
-
-
 
     <footer>
         <div class="footer-logo">
             <img src="images/text_logo2.png" alt="Версия логотипа Центра с текстом">
         </div>
         <div class="footer-links">
-            <a href="#" class="text"> Программы</a>  
-            <a href="#" class="text"> Контакты</a>
+            <a href="index.html#programs" class="text">Программы</a>  
+            <a href="#contacts" class="text">Контакты</a>
         </div>
         <div class="footer-contacts" id="contacts"> 
             <div class="contact"> 
                 <img class="icon" src="images/телефон.png" alt="Телефон">
                 <p class="text">+7 (34668) 61106, доб. 60</p>
             </div>
-            
             <div class="contact"> 
                 <img class="icon" src="images/email.png" alt="Email">
                 <p class="text">tsdut@mail.ru</p>
             </div>
-
             <div class="contact"> 
                 <img class="icon" src="images/почта.png" alt="Почта">
-                <p class="text">Ханты-Мансийский автономный округ – Югра, г.Радужный, 
-            тер. Аэропорт, стр. 2</p>
+                <p class="text">Ханты-Мансийский автономный округ – Югра, г.Радужный, тер. Аэропорт, стр. 2</p>
             </div>
-
         </div>
         <div class="footer-up">
             <img src="images/наверх.png" alt="Кнопка наверх" id="scroll-up">
         </div>
         <div class="footer-copiright">
-            <p class="note">© 2025 <br> Cогласие на обработку персональных данных </p>
+            <p class="note">© 2025 <br> Cогласие на обработку персональных данных</p>
         </div>
     </footer>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+    <script src="program.js"></script>
 </body>
 </html>

@@ -1,343 +1,193 @@
 
-//  ЗАГРУЗКА КАРТОЧКИ ИЗ БЭКА
+
+// // ФОРМА ЗАПИСИ НА ПРОГРАММУ
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM загружен');
+// document.addEventListener('DOMContentLoaded', () => {
+//     const form = document.getElementById('application-form');
+//     const phoneInput = document.getElementById('phone');
+//     const emailInput = document.getElementById('email');
+//     const emailError = document.getElementById('email-error');
+//     const submitButton = form.querySelector('.form-button');
+//     const successMessage = document.getElementById('form-success');
     
-    // Инициализация клиента Supabase
-    const supabaseUrl = 'https://bddjcnnhebzecjidvwvu.supabase.co';
-    const supabaseKey = 'sb_publishable_O3z7KO02mrk0XV5cTOBvqw_WrQ7K_Sv';
-    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+//     // Маска для телефона
+//     phoneInput.addEventListener('input', (e) => {
+//         let value = e.target.value.replace(/\D/g, '');
+        
+//         if (value.length > 0) {
+//             if (value[0] !== '7') {
+//                 value = '7' + value;
+//             }
+            
+//             let formatted = '+7';
+            
+//             if (value.length > 1) {
+//                 formatted += ' ' + value.substring(1, 4);
+//             }
+//             if (value.length >= 5) {
+//                 formatted += ' ' + value.substring(4, 7);
+//             }
+//             if (value.length >= 8) {
+//                 formatted += ' ' + value.substring(7, 9);
+//             }
+//             if (value.length >= 10) {
+//                 formatted += ' ' + value.substring(9, 11);
+//             }
+            
+//             e.target.value = formatted.trim();
+//         } else {
+//             e.target.value = '';
+//         }
+//     });
     
-    console.log('Supabase клиент создан');
-
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;');
-    }
-
-    async function getSignedImageUrl(imageName) {
-        if (!imageName) return null;
-        
-        try {
-            const { data, error } = await supabaseClient
-                .storage
-                .from('images')
-                .createSignedUrl(imageName, 3600);
-            
-            if (error) {
-                console.error(`Ошибка получения signed URL для ${imageName}:`, error);
-                return null;
-            }
-            
-            return data.signedUrl;
-        } catch (error) {
-            console.error('Ошибка при создании signed URL:', error);
-            return null;
-        }
-    }
-
-    async function loadProgramsWithSignedUrls() {
-        const container = document.getElementById('programs-container');
-        
-        if (!container) {
-            console.error('Контейнер programs-container не найден!');
-            return;
-        }
-        
-        try {
-            container.innerHTML = '<div class="loading">Загрузка программ...</div>';
-            
-            const { data: programs, error: programsError } = await supabaseClient
-                .from('Programs')
-                .select('*')
-                .order('id', { ascending: true });
-            
-            if (programsError) {
-                throw new Error(programsError.message);
-            }
-            
-            if (!programs || programs.length === 0) {
-                container.innerHTML = '<div class="loading">Программы не найдены</div>';
-                return;
-            }
-            
-            const programsWithImages = await Promise.all(
-                programs.map(async (program) => {
-                    let imageUrl = null;
-                    
-                    if (program.main_image_url) {
-                        imageUrl = await getSignedImageUrl(program.main_image_url);
-                    }
-                    
-                    return {
-                        ...program,
-                        imageUrl: imageUrl
-                    };
-                })
-            );
-            
-            renderProgramCards(programsWithImages);
-            
-        } catch (error) {
-            console.error('Ошибка загрузки программ:', error);
-            container.innerHTML = `<div class="error">Ошибка загрузки программ: ${error.message}</div>`;
-        }
-    }
-
-    function renderProgramCards(programs) {
-        const container = document.getElementById('programs-container');
-        
-        if (!container) {
-            console.error('Контейнер programs-container не найден!');
-            return;
-        }
-        
-        if (!programs || programs.length === 0) {
-            container.innerHTML = '<div class="loading">Программы не найдены</div>';
-            return;
-        }
-        
-        // Проверяем данные
-        console.log('Рендеринг карточек, количество:', programs.length);
-        console.log('Первая программа:', programs[0]);
-        
-        const cardsHtml = programs.map(program => {
-            // Определяем класс для тега статуса
-            const statusClass = program.status === 'Нет мест' ? 'no-spots' : '';
-            
-            // Формируем стиль для обложки
-            const coverStyle = program.imageUrl 
-                ? `background-image: url('${program.imageUrl}'); background-size: cover; background-position: center;`
-                : 'background-color: #f0f0f0; background-image: none;';
-            
-            return `
-                <div class="programm-card">
-                    <div class="programm-card-cover" style="${coverStyle}">
-                        <div class="programm-card-tags">
-                            <div class="programm-card-tag text">${escapeHtml(program.age_tag || '5-8 лет')}</div>
-                            <div class="programm-card-tag text ${statusClass}">${escapeHtml(program.status)}</div>
-                        </div>
-                    </div>
-                    <div class="programm-card-title h3">${escapeHtml(program.title)}</div>
-                    <div class="programm-card-text text">${escapeHtml(program.description)}</div>
-                </div>
-            `;
-        }).join('');
-        
-        console.log('Сгенерированный HTML длина:', cardsHtml.length);
-        container.innerHTML = cardsHtml;
-        console.log('Карточки отрисованы');
-    }
-
-    // Загружаем программы
-    loadProgramsWithSignedUrls();
-});
-
-
-//ЗАГРУЗКА СТРАНИЦ ПРОГРАММ ИЗ БЭКА
-
-
-
-
-
-
-
-
-// ФОРМА ЗАПИСИ НА ПРОГРАММУ
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('application-form');
-    const phoneInput = document.getElementById('phone');
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('email-error');
-    const submitButton = form.querySelector('.form-button');
-    const successMessage = document.getElementById('form-success');
+//     // Валидация email
+//     function validateEmail(email) {
+//         const re = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+//         return re.test(email);
+//     }
     
-    // Маска для телефона
-    phoneInput.addEventListener('input', (e) => {
-        let value = e.target.value.replace(/\D/g, '');
+//     emailInput.addEventListener('input', () => {
+//         const email = emailInput.value;
         
-        if (value.length > 0) {
-            if (value[0] !== '7') {
-                value = '7' + value;
-            }
-            
-            let formatted = '+7';
-            
-            if (value.length > 1) {
-                formatted += ' ' + value.substring(1, 4);
-            }
-            if (value.length >= 5) {
-                formatted += ' ' + value.substring(4, 7);
-            }
-            if (value.length >= 8) {
-                formatted += ' ' + value.substring(7, 9);
-            }
-            if (value.length >= 10) {
-                formatted += ' ' + value.substring(9, 11);
-            }
-            
-            e.target.value = formatted.trim();
-        } else {
-            e.target.value = '';
-        }
-    });
+//         if (email && !validateEmail(email)) {
+//             emailError.textContent = 'Введите корректный email (например, name@domain.ru)';
+//             emailError.classList.add('show');
+//             emailInput.classList.add('error');
+//         } else {
+//             emailError.classList.remove('show');
+//             emailInput.classList.remove('error');
+//         }
+//     });
     
-    // Валидация email
-    function validateEmail(email) {
-        const re = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-        return re.test(email);
-    }
+//     // Валидация телефона
+//     function validatePhone(phone) {
+//         const digits = phone.replace(/\D/g, '');
+//         return digits.length === 11 && digits[0] === '7';
+//     }
     
-    emailInput.addEventListener('input', () => {
-        const email = emailInput.value;
+//     // Валидация формы
+//     function validateForm() {
+//         let isValid = true;
         
-        if (email && !validateEmail(email)) {
-            emailError.textContent = 'Введите корректный email (например, name@domain.ru)';
-            emailError.classList.add('show');
-            emailInput.classList.add('error');
-        } else {
-            emailError.classList.remove('show');
-            emailInput.classList.remove('error');
-        }
-    });
+//         const lastname = document.getElementById('lastname');
+//         const firstname = document.getElementById('firstname');
+//         const phone = phoneInput;
+//         const email = emailInput;
+//         const consent = document.getElementById('consent');
+        
+//         // Проверка полей
+//         [lastname, firstname].forEach(field => {
+//             if (!field.value.trim()) {
+//                 field.classList.add('error');
+//                 isValid = false;
+//             } else {
+//                 field.classList.remove('error');
+//             }
+//         });
+        
+//         // Проверка телефона
+//         if (!validatePhone(phone.value)) {
+//             phone.classList.add('error');
+//             isValid = false;
+//         } else {
+//             phone.classList.remove('error');
+//         }
+        
+//         // Проверка email
+//         if (!validateEmail(email.value)) {
+//             email.classList.add('error');
+//             if (email.value) {
+//                 emailError.textContent = 'Введите корректный email (например, name@domain.ru)';
+//                 emailError.classList.add('show');
+//             }
+//             isValid = false;
+//         } else {
+//             email.classList.remove('error');
+//             emailError.classList.remove('show');
+//         }
+        
+//         // Проверка согласия
+//         if (!consent.checked) {
+//             consent.closest('.form-checkbox').classList.add('error');
+//             isValid = false;
+//         } else {
+//             consent.closest('.form-checkbox').classList.remove('error');
+//         }
+        
+//         return isValid;
+//     }
     
-    // Валидация телефона
-    function validatePhone(phone) {
-        const digits = phone.replace(/\D/g, '');
-        return digits.length === 11 && digits[0] === '7';
-    }
+//     // Отправка формы
+//     form.addEventListener('submit', async (e) => {
+//         e.preventDefault();
+        
+//         if (!validateForm()) {
+//             // Показываем общее сообщение об ошибке
+//             alert('Пожалуйста, заполните все поля корректно');
+//             return;
+//         }
+        
+//         // Блокируем кнопку
+//         submitButton.disabled = true;
+//         submitButton.textContent = 'Отправка...';
+        
+//         // Собираем данные
+//         const formData = {
+//             lastname: document.getElementById('lastname').value.trim(),
+//             firstname: document.getElementById('firstname').value.trim(),
+//             phone: phoneInput.value.trim(),
+//             email: emailInput.value.trim(),
+//             consent: document.getElementById('consent').checked,
+//             created_at: new Date().toISOString()
+//         };
+        
+//         try {
+//             // Здесь должен быть запрос к вашему API
+//             // Пример для Supabase:
+//             /*
+//             const { data, error } = await supabase
+//                 .from('applications')
+//                 .insert([formData]);
+            
+//             if (error) throw error;
+//             */
+            
+//             // Имитация отправки (удалите после подключения Supabase)
+//             await new Promise(resolve => setTimeout(resolve, 1000));
+            
+//             console.log('Форма отправлена:', formData);
+            
+//             // Показываем сообщение об успехе
+//             form.style.display = 'none';
+//             successMessage.style.display = 'block';
+            
+//             // Опционально: скролл к форме
+//             document.querySelector('.block-form').scrollIntoView({
+//                 behavior: 'smooth',
+//                 block: 'center'
+//             });
+            
+//         } catch (error) {
+//             console.error('Ошибка отправки:', error);
+//             alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже.');
+//             submitButton.disabled = false;
+//             submitButton.textContent = 'Записаться';
+//         }
+//     });
     
-    // Валидация формы
-    function validateForm() {
-        let isValid = true;
-        
-        const lastname = document.getElementById('lastname');
-        const firstname = document.getElementById('firstname');
-        const phone = phoneInput;
-        const email = emailInput;
-        const consent = document.getElementById('consent');
-        
-        // Проверка полей
-        [lastname, firstname].forEach(field => {
-            if (!field.value.trim()) {
-                field.classList.add('error');
-                isValid = false;
-            } else {
-                field.classList.remove('error');
-            }
-        });
-        
-        // Проверка телефона
-        if (!validatePhone(phone.value)) {
-            phone.classList.add('error');
-            isValid = false;
-        } else {
-            phone.classList.remove('error');
-        }
-        
-        // Проверка email
-        if (!validateEmail(email.value)) {
-            email.classList.add('error');
-            if (email.value) {
-                emailError.textContent = 'Введите корректный email (например, name@domain.ru)';
-                emailError.classList.add('show');
-            }
-            isValid = false;
-        } else {
-            email.classList.remove('error');
-            emailError.classList.remove('show');
-        }
-        
-        // Проверка согласия
-        if (!consent.checked) {
-            consent.closest('.form-checkbox').classList.add('error');
-            isValid = false;
-        } else {
-            consent.closest('.form-checkbox').classList.remove('error');
-        }
-        
-        return isValid;
-    }
+//     // Сброс ошибок при вводе
+//     const inputs = document.querySelectorAll('.form-input');
+//     inputs.forEach(input => {
+//         input.addEventListener('input', () => {
+//             input.classList.remove('error');
+//         });
+//     });
     
-    // Отправка формы
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        if (!validateForm()) {
-            // Показываем общее сообщение об ошибке
-            alert('Пожалуйста, заполните все поля корректно');
-            return;
-        }
-        
-        // Блокируем кнопку
-        submitButton.disabled = true;
-        submitButton.textContent = 'Отправка...';
-        
-        // Собираем данные
-        const formData = {
-            lastname: document.getElementById('lastname').value.trim(),
-            firstname: document.getElementById('firstname').value.trim(),
-            phone: phoneInput.value.trim(),
-            email: emailInput.value.trim(),
-            consent: document.getElementById('consent').checked,
-            created_at: new Date().toISOString()
-        };
-        
-        try {
-            // Здесь должен быть запрос к вашему API
-            // Пример для Supabase:
-            /*
-            const { data, error } = await supabase
-                .from('applications')
-                .insert([formData]);
-            
-            if (error) throw error;
-            */
-            
-            // Имитация отправки (удалите после подключения Supabase)
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            console.log('Форма отправлена:', formData);
-            
-            // Показываем сообщение об успехе
-            form.style.display = 'none';
-            successMessage.style.display = 'block';
-            
-            // Опционально: скролл к форме
-            document.querySelector('.block-form').scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
-            
-        } catch (error) {
-            console.error('Ошибка отправки:', error);
-            alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже.');
-            submitButton.disabled = false;
-            submitButton.textContent = 'Записаться';
-        }
-    });
-    
-    // Сброс ошибок при вводе
-    const inputs = document.querySelectorAll('.form-input');
-    inputs.forEach(input => {
-        input.addEventListener('input', () => {
-            input.classList.remove('error');
-        });
-    });
-    
-    document.getElementById('consent').addEventListener('change', () => {
-        document.querySelector('.form-checkbox').classList.remove('error');
-    });
-});
+//     document.getElementById('consent').addEventListener('change', () => {
+//         document.querySelector('.form-checkbox').classList.remove('error');
+//     });
+// });
 
 
 

@@ -94,6 +94,7 @@ html {
 
 a {
     text-decoration: none; /* Убираем подчёркивание */
+    border: none;
 }
 
 a:hover {
@@ -383,6 +384,13 @@ img {
 
 .programm-card:active {
     border: 3px solid #B32D00;
+}
+
+.programm-card-link {
+    grid-column: span 4; /* Карточка занимает 4 колонки */
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
 }
 
 .programm-card > .programm-card-cover {
@@ -796,4 +804,700 @@ img {
 
 .form-success p:first-child {
     color: #9AC972;
+}
+
+
+@media (max-width: 768px) {
+    
+    .h1 {
+    font-size: 64px;
+    }
+
+
+    .h2 {
+        font-size: 42px;
+    }
+
+
+    .h3 {
+        font-size: 18px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .accent {        
+        font-size: 16px;
+    }
+
+    .note {
+        font-size: 12px;
+    }
+
+
+    /*ОСНОВНОЙ БЛОК*/
+
+
+    .container {
+        padding: 0 28px;
+    }
+
+
+    /*ШАПКА И ПОДВАЛ*/
+
+    header {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 28px;
+        align-items: center;
+        height: 74px;
+        padding: 0 28px;
+    }
+
+    /* .logo {
+        grid-column: span 2; 
+    } */
+
+    .logo > img {
+    width: 80px;
+    }
+
+    /* ССЫЛКИ В ШАПКЕ */
+    .links {
+        grid-column: 2 / span 3;
+        gap: 12px;
+    }
+
+
+    footer {
+        
+        padding-left: 28px;
+        padding-right: 28px;
+        padding-top: 24px;
+        padding-bottom: 22px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: auto auto auto auto;
+        column-gap: 28px;
+        /* row-gap: clamp(10px, 0.7vw, 16px); */
+        height: 380px;
+    }
+
+    .footer-logo {
+        grid-column: 1 / span 3;
+        grid-row: 1 / 2;
+    }
+
+    .footer-logo > img {
+        width: 176px;
+    }
+
+    .footer-links {
+        /* gap: 6px; */
+        grid-column: 1 / span 4;
+        grid-row: 2 / 3;
+    }
+
+    .footer-contacts {
+        grid-column: 1 / span 4;
+        grid-row: 3 / 4;
+    }
+
+    .footer-contacts > .contact {
+        gap: 12px;
+    }
+
+    .contact > .icon {
+        width: 20px;
+        /* padding: 4px 0; */
+    }
+
+    .footer-up {
+        grid-column: 4 / span 1;
+        grid-row: 1 / 2; 
+    }
+
+    .footer-up > img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .footer-copiright {
+        grid-column: 1 / span 12;
+        grid-row: 4 / 5;
+    }
+
+    /*КОМПОНЕНТЫ*/
+
+    .cover {
+        /* top: 0;
+        left: 0; */
+        width: 100%;
+        height: 916px;
+    }
+
+    /* .cover iframe {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: auto; 
+        transform: translateX(-50%); 
+        border: none;
+        overflow: hidden;
+
+    } */
+
+    .cover-2 {
+
+        top: 582px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 354px;
+        
+    }
+
+    .cover-2 > .child-1 {
+        display: none;
+    }
+
+    /* .cover-2 img {
+        width: 100%;
+        height: 100%;
+    } */
+
+    .cover-2 > .child-2 {
+        width: 100%;
+        height: 100%;    
+    }
+
+    /* .child-2 iframe {
+        
+        width: 110%;
+        height: 110%;
+        border: none;
+        
+    } */
+
+
+
+
+
+    /* img {
+        /* max-width: 100%;
+        display: block;
+        padding: 0;
+        margin: 0;
+    */
+
+    /* .cover > img {
+        max-width: 100%;
+
+    }  */
+
+    .warning {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        grid-column: 8 / span 5;
+        gap: clamp(32px, 2.1vw, 40px);
+    }
+
+    .warning > p {
+        padding-top: (12px, 1.2vw, 18px);
+        margin-bottom: clamp(85px, 5.83vw, 112px);
+    }
+
+    .warning > .icon {
+        width: clamp(45px, 3.54vw, 68px);
+        height: clamp(45px, 3.54vw, 68px);
+        flex-shrink: 0;
+        background-image: url(../images/warning-icon.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+
+    .mascots-image-wrapper {
+        grid-column: 5 / span 8;
+        height: clamp(580px, 44.8vw, 860px);
+    }
+
+    .mascots-image-wrapper > img {
+        height: 100%;
+    }
+
+    /*БЛОКИ*/
+
+
+    .headline2-block {
+        display: grid;
+        grid-template-columns: repeat(1fr);
+        /* gap: clamp(20px, 2vw, 36px); */
+        align-items: flex-start;
+        margin-bottom: clamp(64px, 6vw, 90px);
+        grid-column: 1 / span 12;
+    }
+
+    .headline2-block {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .headline2-block.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* КАРТОЧКИ */
+
+
+    .programm-card {
+        grid-column: span 4;
+        /* min-height: clamp(480px, 32vw, 572px); */
+        height: clamp(480px, 36vw, 640px);
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        /* padding-bottom: clamp(10px, 0.7vw, 16px); */
+        border: 3px solid #4E66A6;
+        border-radius: clamp(16px, 1.1vw, 20px);
+        overflow: hidden;
+        transition: border-color 0.3s ease-in-out;
+
+    }
+
+    .programm-card:hover {
+        border: 3px solid #F29D06;
+    }
+
+    .programm-card:active {
+        border: 3px solid #B32D00;
+    }
+
+    .programm-card-link {
+        grid-column: span 4; /* Карточка занимает 4 колонки */
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+    }
+
+    .programm-card > .programm-card-cover {
+        display: inline-flex;
+        align-items: flex-end;
+        flex-shrink: 0;
+        width: 100%;
+        height: clamp(280px, 20vw, 380px);
+        margin-bottom: clamp(12px, 1.2vw, 20px);
+        /* padding-bottom: clamp(20px, 1.8vw, 26px); */
+        background-image: url(../images/programms/Туристенок.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        /* border: solid; */
+    }
+
+
+    .programm-card-tags {
+        display: flex;
+        gap: clamp(10px, 1vw, 15px);
+        justify-content: flex-start;
+        margin-left: clamp(16px, 2vw, 30px);
+        margin-bottom: clamp(20px, 1.8vw, 26px);
+    }
+
+    .programm-card-tags > .programm-card-tag {
+        padding: clamp(5px, 0.25vw, 8px) clamp(12px, 1.2vw, 18px);
+        border-radius: clamp(16px, 1.1vw, 20px);
+        color:#FFFFFF;
+        background-color: #9AC972;
+
+    }
+
+    .programm-card-tags > .programm-card-tag.no-spots {
+        background-color: #B32D00; /* цвет для статуса "Нет мест" */
+    }
+
+    /* Стили для загрузки и ошибок */
+    .loading {
+        text-align: center;
+        padding: 40px;
+        font-size: clamp(16px, 1.1vw, 18px);
+        color: #8B8B8B;
+    }
+
+    .error {
+        text-align: center;
+        padding: 40px;
+        font-size: clamp(16px, 1.1vw, 18px);
+        color: #B32D00;
+    }
+
+
+
+    .programm-card > .programm-card-title {
+        margin: 0 clamp(16px, 2vw, 30px) clamp(5px, 0.45vw, 10px) clamp(16px, 2vw, 30px);
+        height: clamp(48px, 4vw, 60px);
+        color: #4E66A6;
+    }
+
+    .programm-card > .programm-card-text {
+        margin: 0 clamp(16px, 2vw, 30px) 16px clamp(16px, 2vw, 30px);
+        min-height: clamp(72px, 6vw, 90px);
+    }
+
+
+
+
+    /*КНОПКИ*/
+
+    .btn1 {
+        padding-top: clamp(10px, 0.7vw, 16px);
+        padding-bottom: clamp(10px, 0.7vw, 16px);
+        margin-top: clamp(36px, 2.3vw, 44px);
+        color: #FFFFFF;
+        font-family: "Montserrat";
+        font-size: clamp(18px, 1.3vw, 22px);
+        font-weight: 600;
+        background-color: #B32D00;
+        border-radius: clamp(16px, 1.1vw, 20px);
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn1:hover {
+        
+        background-color: #F29D06;
+    }
+
+    .btn1:active {
+        background-color: #F29D06;
+        outline: 3px solid #B32D00;
+        outline-offset: -3px
+    }
+
+    .btn2 {
+        display: inline-flex; /* Используем flexbox */
+        align-items: center; /* Центрируем текст и картинку по вертикали */
+        width: 100%;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+
+
+    .btn2 > .text {
+        color:#4E66A6;
+    }
+
+    .btn2 > .icon {
+        width: clamp(110px, 7.6vw, 146px); /* Размер иконки */
+        height: auto;
+        background-image: url(../images/стрелка-синяя.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: clamp(32px, 2.1vw, 40px);
+        min-height: clamp(20px, 1.3vw, 25px);
+        transition: border-color 0.3s ease-in-out;
+    }
+
+    .btn2:hover .text {
+        color:#B32D00;
+    }
+
+    .btn2:hover > .icon {
+        width: clamp(110px, 7.6vw, 146px); /* Размер иконки */
+        height: auto;
+        background-image: url(../images/стрелка-красная.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: clamp(32px, 2.1vw, 40px);
+        min-height: clamp(20px, 1.3vw, 25px);
+    }
+
+    .btn2:active .text {
+        color:#20272C;
+    }
+
+    .btn2:active > .icon {
+        width: clamp(110px, 7.6vw, 146px); /* Размер иконки */
+        height: auto;
+        background-image: url(../images/стрелка-черная.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: clamp(32px, 2.1vw, 40px);
+        min-height: clamp(20px, 1.3vw, 25px);
+    }
+
+    /*АККОРДЕОН*/
+
+
+            .block-5 {
+                display: grid;
+                grid-template-columns: repeat(12, minmax(0, 1fr));
+                column-gap: clamp(20px, 2vw, 36px);
+                row-gap: 0;
+                margin-bottom: clamp(80px, 13vw, 250px);
+                align-items: flex-start;
+            }
+            
+
+            .block-5 > .h2 {
+                margin-bottom: clamp(64px, 6vw, 90px);
+                grid-column: 1 / span 12;
+            }
+
+            
+            .accordion-item {
+                border: 3px solid #4E66A6;
+                /* grid-column: span 12; */
+                border-radius: clamp(16px, 1.1vw, 20px);
+                padding: clamp(16px, 1.1vw, 20px) clamp(20px, 1.8vw, 26px);
+                width: auto;
+                transition: border-color 0.3s ease-in-out;
+                /* margin-bottom: clamp(10px, 1vw, 16px); */
+            }
+
+            .accordion-item:hover {
+                border: 3px solid #F29D06;
+            }
+
+            .accordion-item:active {
+                border: 3px solid #B32D00;
+            }
+
+            .accordion-wrapper {
+                grid-column: span 12;
+                display: flex;
+                flex-flow: column nowrap;
+                gap: clamp(10px, 1vw, 16px);
+
+            }
+            
+            .accordion-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 100%;
+                background: transparent;
+                border: none;
+                text-align: left;
+                padding: 0; /* сбрасываем padding кнопки */
+                margin: 0; /* сбрасываем margin кнопки */
+            }
+            .accordion-header > p {
+                width: 90%;
+            } 
+            
+            .accordion-icon {
+                width: clamp(22px, 1.67vw, 32px);
+                height: clamp(20px, 1.56vw, 30px);
+                background-image: url(../images/плюс.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-image 0.1s ease;
+                flex-shrink: 0;
+                will-change: transform;
+            }
+
+            .accordion-item.active .accordion-icon {
+                transform: rotate(180deg);
+            }
+            
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out;
+            }
+            
+            .accordion-content > p {
+                padding-top: clamp(18px, 1.3vw, 22px);
+                width: 90%;
+            }  
+            
+            .accordion-item.active .accordion-content {
+                max-height: 500px;
+                transition: max-height 0.4s ease-in;
+            }
+            
+
+
+
+
+    /* ФОРМА ЗАПИСИ */
+
+
+    /* Блок формы */
+
+    .block-form {
+        grid-column: 1 / span 4;
+        margin-bottom: clamp(80px, 13vw, 250px);
+    }
+
+
+    .form-title {
+        text-align: center;
+    }
+
+    .form-subtitle {
+        
+        text-align: center;
+        margin: clamp(14px, 1vw, 16px) 0 clamp(14px, 1vw, 16px) 0;
+    }
+
+    /* Поля формы */
+
+    .form-field {
+        margin-bottom: 8px;
+    }
+
+    .form-label {
+        font-family: "Montserrat";
+        font-size: clamp(14px, 0.9vw, 20px);
+        font-weight: 400;
+        line-height: 150%;
+        color: #20272C;
+        margin-bottom: 4px;
+        margin-left: 26px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: clamp(5px, 0.45vw, 10px) clamp(20px, 1.4vw, 26px);
+        font-family: "Montserrat";
+        font-size: clamp(18px, 1.2vw, 22px);
+        font-weight: 400;
+        /* margin: 0; */
+        line-height: 150%;
+        color: #20272C;
+        background: #FFFFFF;
+        border: 3px solid #4E66A6;
+        border-radius: clamp(16px, 1.1vw, 20px);
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .form-input::placeholder {
+        color: #8B8B8B;
+    }
+
+    .form-input:hover {
+        outline: none;
+        border-color: #F29D06;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #F29D06;
+    }
+
+    .form-input.error {
+        border-color: #B32D00;
+    }
+
+    .form-input.error:focus {
+        box-shadow: 0 0 0 3px rgba(179, 45, 0, 0.1);
+    }
+
+    /* Сообщение об ошибке */
+
+    .form-error {
+        font-family: "Montserrat";
+        font-size: clamp(14px, 0.9vw, 20px);
+        font-weight: 400;
+        line-height: 150%;
+        color: #B32D00;
+        margin-top: 6px;
+        display: none;
+    }
+
+    .form-error.show {
+        display: block;
+    }
+
+    /* Чекбокс */
+    .form-checkbox {
+        margin: clamp(20px, 2.5vw, 28px) 0 0 0;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+        font-family: "Montserrat";
+        font-size: clamp(14px, 0.9vw, 20px);
+        font-weight: 400;
+        line-height: 150%;
+        color: #20272C;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        display: none;
+    }
+
+    .checkbox-custom {
+        width: clamp(20px, 1.8vw, 32px);
+        height: clamp(20px, 1.8vw, 32px);
+        border: 3px solid #4E66A6;
+        border-radius: clamp(5px, 0.45vw, 10px);
+        display: inline-block;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.2s ease;
+    }
+
+    .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+        background-color: #4E66A6;
+        outline: 3px solid #FFFFFF;
+        outline-offset: -5px;
+        border-radius: clamp(5px, 0.45vw, 10px);
+        /* padding: 3px; */
+        
+    }
+
+
+
+    .checkbox-label:hover .checkbox-custom {
+        border-color: #F29D06;
+    }
+
+    .checkbox-text {
+        flex: 1;
+    }
+
+    /* Кнопка формы */
+
+    .form-button {
+        width: 100%;
+    }
+
+
+    /* Сообщение об успешной отправке */
+
+    .form-success {
+
+        height: auto;
+        text-align: center;
+        padding: clamp(20px, 2.5vw, 32px);
+        border: 3px solid #9AC972;
+        border-radius: clamp(16px, 1.1vw, 20px);
+        margin-top: clamp(20px, 2.5vw, 28px);
+    }
+
+    .form-success p:first-child {
+        color: #9AC972;
+    }
+
+
+    
 }

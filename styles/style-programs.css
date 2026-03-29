@@ -161,3 +161,143 @@
     grid-column: 1 / span 12;
     margin-bottom: clamp(20px, 2vw, 36px);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Динамические блоки контента */
+.content-block {
+    margin-bottom: clamp(40px, 3.02vw, 58px);
+}
+
+.content-block.text-block {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(20px, 2vw, 36px);
+}
+
+.content-block.text-block .text {
+    grid-column: 1 / span 12;
+    margin-bottom: clamp(28px, 3.6vw, 46px);
+}
+
+.content-block.text-block .h3 {
+    grid-column: 1 / span 12;
+    margin-bottom: clamp(20px, 2vw, 36px);
+}
+
+.content-block.images-block {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(20px, 2vw, 36px);
+    margin-bottom: clamp(40px, 3.02vw, 58px);
+}
+
+.content-block.images-block .image-wrapper-half {
+    grid-column: span 6;
+    border-radius: clamp(16px, 1.1vw, 20px);
+    height: clamp(550px, 37vw, 710px);
+    overflow: hidden;
+}
+
+.content-block.images-block .image-wrapper-half img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Для одиночной картинки */
+.content-block.single-image {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(20px, 2vw, 36px);
+    margin-bottom: clamp(40px, 3.02vw, 58px);
+}
+
+.content-block.single-image .image-wrapper-full {
+    grid-column: 1 / span 12;
+    border-radius: clamp(16px, 1.1vw, 20px);
+    height: clamp(550px, 37vw, 710px);
+    overflow: hidden;
+}
+
+.content-block.single-image .image-wrapper-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Кнопка с документами */
+.documents-button-wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    margin-bottom: clamp(40px, 3.02vw, 58px);
+}
+
+.documents-button-wrapper .btn2 {
+    grid-column: 1 / span 4;
+}
+
+/* Блок с предупреждением */
+.warning-block {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    margin-bottom: clamp(40px, 3.02vw, 58px);
+}
+
+.warning-block .warning {
+    grid-column: 1 / span 12;
+    display: flex;
+    gap: clamp(12px, 1vw, 20px);
+    align-items: center;
+    background: #FFF8E7;
+    border-left: 4px solid #F29D06;
+    padding: clamp(16px, 1.5vw, 24px);
+    border-radius: clamp(12px, 1vw, 16px);
+}
+
+.warning-block .warning .icon {
+    width: clamp(24px, 2vw, 32px);
+    height: clamp(24px, 2vw, 32px);
+    background-image: url('../images/warning-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.warning-block .warning .text {
+    margin: 0;
+    font-size: clamp(14px, 1vw, 16px);
+    color: #B32D00;
+}
+
+/* Скрытые элементы для анимации */
+.content-block {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
