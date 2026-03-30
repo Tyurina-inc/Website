@@ -261,7 +261,7 @@
     margin-bottom: clamp(40px, 3.02vw, 58px);
 }
 
-.warning-block .warning {
+/* .warning-block .warning {
     grid-column: 1 / span 12;
     display: flex;
     gap: clamp(12px, 1vw, 20px);
@@ -286,7 +286,7 @@
     margin: 0;
     font-size: clamp(14px, 1vw, 16px);
     color: #B32D00;
-}
+} */
 
 /* Скрытые элементы для анимации */
 .content-block {
