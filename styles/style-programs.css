@@ -1,7 +1,6 @@
 /* БЛОКИ НА СТРАНИЦЕ ПРОГРАММ */
 
 
-/* Заголовок с анимацией печатной машинки */
 .headline2-block-program {
     display: grid;
     grid-template-columns: 1fr;
@@ -9,35 +8,16 @@
     align-items: flex-start;
     margin-bottom: clamp(20px, 1.46vw, 28px);
     margin-top: clamp(50px, 3.85vw, 74px);
-    /* grid-column: 1 / span 12; */
 }
 
 .headline2-block-program .h2 {
-    /* grid-column: 1 / span 1; */
-    /* width: 100%; */
-    /* overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
 
-    animation: typewriter 3s steps(48, end) 0.3s forwards; */
-    /* width: 0; */
-    /* font-size: clamp(32px, 4.6vw, 70px); */
     white-space: nowrap;
     color: #4E66A6;
     margin: 0;
 }
 
-/* Анимация печатной машинки */
-/* @keyframes typewriter {
-    0% {
-        width: 0;
-        opacity: 1;
-    }
-    100% {
-        width: 100%;
-        opacity: 1;
-    }
-} */
+
 
 /* Общие стили для анимируемых элементов */
 .block-1-program p,
@@ -74,7 +54,7 @@
     grid-column: 1 / span 7;
     grid-row: 1 / 2;
     margin-bottom: clamp(18px, 1.3vw, 22px);
-    animation-delay: 0.3s; /* одновременно с началом печати */
+    animation-delay: 0.3s; 
     font-size: clamp(16px, 1.3vw, 20px);
     line-height: 1.5;
 }
@@ -85,13 +65,13 @@
     justify-content: flex-start;
     margin: 0;
     padding: 0;
-    animation-delay: 0.3s; /* одновременно с началом печати */
+    animation-delay: 0.3s; 
 }
 
 .block-1-program > .btn1 {
     grid-column: 1 / span 4;
     grid-row: 3 / 4;
-    animation-delay: 0.3s; /* одновременно с началом печати */
+    animation-delay: 0.3s; 
     margin-top: clamp(12px, 1.2vw, 20px);
 }
 
@@ -121,7 +101,7 @@
     border-radius: clamp(16px, 1.1vw, 20px);
     height: clamp(550px, 37vw, 710px);
     overflow: hidden;
-    animation-delay: 0.3s; /* одновременно с началом печати */
+    animation-delay: 0.3s; 
 }
 
 .image-wrapper-full > img {
@@ -156,7 +136,6 @@
 
 .block-2-program > .text {
     grid-column: 1 / span 12;
-    /* margin-bottom: clamp(28px, 3.6vw, 46px); */
 }
 
 .block-2-program > .h3 {
@@ -261,33 +240,6 @@
     margin-bottom: clamp(40px, 3.02vw, 58px);
 }
 
-/* .warning-block .warning {
-    grid-column: 1 / span 12;
-    display: flex;
-    gap: clamp(12px, 1vw, 20px);
-    align-items: center;
-    background: #FFF8E7;
-    border-left: 4px solid #F29D06;
-    padding: clamp(16px, 1.5vw, 24px);
-    border-radius: clamp(12px, 1vw, 16px);
-}
-
-.warning-block .warning .icon {
-    width: clamp(24px, 2vw, 32px);
-    height: clamp(24px, 2vw, 32px);
-    background-image: url('../images/warning-icon.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    flex-shrink: 0;
-}
-
-.warning-block .warning .text {
-    margin: 0;
-    font-size: clamp(14px, 1vw, 16px);
-    color: #B32D00;
-} */
-
 /* Скрытые элементы для анимации */
 .content-block {
     opacity: 0;
@@ -304,9 +256,7 @@
 
 
 @media (max-width: 640px) {
-    /* Заголовок с анимацией печатной машинки */
     .headline2-block-program {
-        /* grid-template-columns: repeat(4, minmax(0, 1fr)); */
         gap: 28px;
         margin-bottom: 24px;
         margin-top: 28px;
@@ -314,12 +264,10 @@
     }
 
     .headline2-block-program .h2 {
-        /* grid-column: 1 / span 4; */
         font-size: 42px;
     }
 
 
-    /* Распределение элементов в сетке */
     .block-1-program {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         grid-template-rows: auto auto auto;
@@ -422,14 +370,12 @@
     }
 
 
-    /* Кнопка с документами */
     .documents-button-wrapper {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         margin-bottom: 50px;
     }
 
 
-    /* Блок с предупреждением */
     .warning-block {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         margin-bottom: 50px;

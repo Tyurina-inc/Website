@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Получение signed URL для изображения
-    async function getSignedImageUrl(imageName, width = 800, quality = 80) {
+    async function getSignedImageUrl(imageName, width = 1800, quality = 90) {
     console.log('=== getSignedImageUrl вызвана ===');
     console.log('imageName:', imageName);
     console.log('width:', width);

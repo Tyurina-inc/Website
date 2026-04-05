@@ -1,196 +1,4 @@
 
-
-// // ФОРМА ЗАПИСИ НА ПРОГРАММУ
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const form = document.getElementById('application-form');
-//     const phoneInput = document.getElementById('phone');
-//     const emailInput = document.getElementById('email');
-//     const emailError = document.getElementById('email-error');
-//     const submitButton = form.querySelector('.form-button');
-//     const successMessage = document.getElementById('form-success');
-    
-//     // Маска для телефона
-//     phoneInput.addEventListener('input', (e) => {
-//         let value = e.target.value.replace(/\D/g, '');
-        
-//         if (value.length > 0) {
-//             if (value[0] !== '7') {
-//                 value = '7' + value;
-//             }
-            
-//             let formatted = '+7';
-            
-//             if (value.length > 1) {
-//                 formatted += ' ' + value.substring(1, 4);
-//             }
-//             if (value.length >= 5) {
-//                 formatted += ' ' + value.substring(4, 7);
-//             }
-//             if (value.length >= 8) {
-//                 formatted += ' ' + value.substring(7, 9);
-//             }
-//             if (value.length >= 10) {
-//                 formatted += ' ' + value.substring(9, 11);
-//             }
-            
-//             e.target.value = formatted.trim();
-//         } else {
-//             e.target.value = '';
-//         }
-//     });
-    
-//     // Валидация email
-//     function validateEmail(email) {
-//         const re = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
-//         return re.test(email);
-//     }
-    
-//     emailInput.addEventListener('input', () => {
-//         const email = emailInput.value;
-        
-//         if (email && !validateEmail(email)) {
-//             emailError.textContent = 'Введите корректный email (например, name@domain.ru)';
-//             emailError.classList.add('show');
-//             emailInput.classList.add('error');
-//         } else {
-//             emailError.classList.remove('show');
-//             emailInput.classList.remove('error');
-//         }
-//     });
-    
-//     // Валидация телефона
-//     function validatePhone(phone) {
-//         const digits = phone.replace(/\D/g, '');
-//         return digits.length === 11 && digits[0] === '7';
-//     }
-    
-//     // Валидация формы
-//     function validateForm() {
-//         let isValid = true;
-        
-//         const lastname = document.getElementById('lastname');
-//         const firstname = document.getElementById('firstname');
-//         const phone = phoneInput;
-//         const email = emailInput;
-//         const consent = document.getElementById('consent');
-        
-//         // Проверка полей
-//         [lastname, firstname].forEach(field => {
-//             if (!field.value.trim()) {
-//                 field.classList.add('error');
-//                 isValid = false;
-//             } else {
-//                 field.classList.remove('error');
-//             }
-//         });
-        
-//         // Проверка телефона
-//         if (!validatePhone(phone.value)) {
-//             phone.classList.add('error');
-//             isValid = false;
-//         } else {
-//             phone.classList.remove('error');
-//         }
-        
-//         // Проверка email
-//         if (!validateEmail(email.value)) {
-//             email.classList.add('error');
-//             if (email.value) {
-//                 emailError.textContent = 'Введите корректный email (например, name@domain.ru)';
-//                 emailError.classList.add('show');
-//             }
-//             isValid = false;
-//         } else {
-//             email.classList.remove('error');
-//             emailError.classList.remove('show');
-//         }
-        
-//         // Проверка согласия
-//         if (!consent.checked) {
-//             consent.closest('.form-checkbox').classList.add('error');
-//             isValid = false;
-//         } else {
-//             consent.closest('.form-checkbox').classList.remove('error');
-//         }
-        
-//         return isValid;
-//     }
-    
-//     // Отправка формы
-//     form.addEventListener('submit', async (e) => {
-//         e.preventDefault();
-        
-//         if (!validateForm()) {
-//             // Показываем общее сообщение об ошибке
-//             alert('Пожалуйста, заполните все поля корректно');
-//             return;
-//         }
-        
-//         // Блокируем кнопку
-//         submitButton.disabled = true;
-//         submitButton.textContent = 'Отправка...';
-        
-//         // Собираем данные
-//         const formData = {
-//             lastname: document.getElementById('lastname').value.trim(),
-//             firstname: document.getElementById('firstname').value.trim(),
-//             phone: phoneInput.value.trim(),
-//             email: emailInput.value.trim(),
-//             consent: document.getElementById('consent').checked,
-//             created_at: new Date().toISOString()
-//         };
-        
-//         try {
-//             // Здесь должен быть запрос к вашему API
-//             // Пример для Supabase:
-//             /*
-//             const { data, error } = await supabase
-//                 .from('applications')
-//                 .insert([formData]);
-            
-//             if (error) throw error;
-//             */
-            
-//             // Имитация отправки (удалите после подключения Supabase)
-//             await new Promise(resolve => setTimeout(resolve, 1000));
-            
-//             console.log('Форма отправлена:', formData);
-            
-//             // Показываем сообщение об успехе
-//             form.style.display = 'none';
-//             successMessage.style.display = 'block';
-            
-//             // Опционально: скролл к форме
-//             document.querySelector('.block-form').scrollIntoView({
-//                 behavior: 'smooth',
-//                 block: 'center'
-//             });
-            
-//         } catch (error) {
-//             console.error('Ошибка отправки:', error);
-//             alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже.');
-//             submitButton.disabled = false;
-//             submitButton.textContent = 'Записаться';
-//         }
-//     });
-    
-//     // Сброс ошибок при вводе
-//     const inputs = document.querySelectorAll('.form-input');
-//     inputs.forEach(input => {
-//         input.addEventListener('input', () => {
-//             input.classList.remove('error');
-//         });
-//     });
-    
-//     document.getElementById('consent').addEventListener('change', () => {
-//         document.querySelector('.form-checkbox').classList.remove('error');
-//     });
-// });
-
-
-
 // КНОПКА СКРОЛЛА
 
 document.querySelectorAll('.prog-btn').forEach(button => {
@@ -210,49 +18,47 @@ document.querySelectorAll('.prog-btn').forEach(button => {
 //КНОПКА СКРОЛЛА ВВЕРХ
 
     document.addEventListener('DOMContentLoaded', () => {
-    const logo = document.getElementById('scroll-up');
+    const up_btn = document.getElementById('scroll-up');
     
     // Пути к изображениям
     const defaultSrc = 'images/наверх.png';
     const hoverSrc = 'images/наверх-красная.png';
     const activeSrc = 'images/наверх-черная.png';
     
-    if (logo) {
+    if (up_btn) {
         // При наведении
-        logo.addEventListener('mouseenter', () => {
-            logo.src = hoverSrc;
+        up_btn.addEventListener('mouseenter', () => {
+            up_btn.src = hoverSrc;
         });
         
         // Когда убираем курсор
-        logo.addEventListener('mouseleave', () => {
-            logo.src = defaultSrc;
+        up_btn.addEventListener('mouseleave', () => {
+            up_btn.src = defaultSrc;
         });
         
         // При нажатии
-        logo.addEventListener('mousedown', () => {
-            logo.src = activeSrc;
+        up_btn.addEventListener('mousedown', () => {
+            up_btn.src = activeSrc;
         });
         
         // Когда отпускаем кнопку мыши
-        logo.addEventListener('mouseup', () => {
-            logo.src = hoverSrc; // возвращаем состояние наведения
+        up_btn.addEventListener('mouseup', () => {
+            up_btn.src = hoverSrc; // возвращаем состояние наведения
         });
         
         // Если нажали и ушли с картинки
-        logo.addEventListener('mouseleave', () => {
-            logo.src = defaultSrc;
+        up_btn.addEventListener('mouseleave', () => {
+            up_btn.src = defaultSrc;
         });
         
         // Скролл к началу
-        logo.addEventListener('click', () => {
+        up_btn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
         
-        // Стиль курсора
-        logo.style.cursor = 'pointer';
     }
 });
 
@@ -281,7 +87,7 @@ document.querySelectorAll('.accordion-item').forEach(item => {
             
         } else {
             // Закрываем аккордеон
-            // Сначала меняем иконку на плюс
+            
             icon.style.backgroundImage = "url('images/плюс.png')";
             
             // Затем поворачиваем обратно
@@ -354,39 +160,3 @@ function resizeCoverIframe() {
     iframe.style.transform = `translateX(-50%)`;
 }
 
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     resizeFireIframe();
-// });
-
-// window.addEventListener('load', resizeFireIframe);
-// window.addEventListener('resize', resizeFireIframe);
-
-// function resizeFireIframe() {
-//     const iframe = document.querySelector('#mascots-fire');
-//     const container = document.querySelector('.child-2');
-    
-//     if (!iframe || !container) return;
-    
-//     // Размеры контейнера
-//     const containerWidth = container.offsetWidth;
-//     const containerHeight = container.offsetHeight;
-    
-//     // Исходные размеры анимации (из вашего файла)
-//     // Теперь соответствуют размеру child-2 на 1920px
-//     const animationWidth = 642;   // ширина анимации в пикселях
-//     const animationHeight = 560;  // высота анимации в пикселях
-    
-//     // Вычисляем масштаб для полного заполнения контейнера
-//     const scaleX = containerWidth / animationWidth;
-//     const scaleY = containerHeight / animationHeight;
-//     const scale = Math.max(scaleX, scaleY); // cover режим
-    
-//     // Задаем фиксированные размеры iframe
-//     iframe.style.width = `${animationWidth}px`;
-//     iframe.style.height = `${animationHeight}px`;
-    
-//     // Масштабируем и центрируем
-//     iframe.style.transform = `translate(-50%, -50%) scale(${scale})`;
-// }

@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Brusnika";
-    src: url("fonts/Brusnika-normal_version.otf") format("truetype");
+    src: url("fonts/Brusnika-normal_version.otf") format("opentype");
     font-style: normal;
     font-weight: normal;
 }
