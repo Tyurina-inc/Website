@@ -12,10 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const supabaseUrl = 'https://bddjcnnhebzecjidvwvu.supabase.co';
     const supabaseKey = 'sb_publishable_O3z7KO02mrk0XV5cTOBvqw_WrQ7K_Sv';
     const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-    
-    console.log('Supabase клиент создан');
-
-
 
 
 
@@ -31,49 +27,49 @@ document.addEventListener('DOMContentLoaded', function() {
             .replace(/'/g, '&#39;');
     }
 
+
+
+
+
     // Получение ID программы из URL
     function getProgramIdFromUrl() {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get('id');
     }
 
+
+
+
     // Получение signed URL для изображения
     async function getSignedImageUrl(imageName, width = 1800, quality = 90) {
-    console.log('=== getSignedImageUrl вызвана ===');
-    console.log('imageName:', imageName);
-    console.log('width:', width);
     
-    if (!imageName) {
-        console.log('imageName пустой, возвращаю null');
-        return null;
-    }
-    
-    try {
-        const { data, error } = await supabaseClient
-            .storage
-            .from('images')
-            .createSignedUrl(imageName, 3600, {
-                transform: {
-                    width: width,
-                    quality: quality,
-                    resize: 'contain'
-                }
-            });
-        
-        console.log('Результат createSignedUrl:');
-        console.log('Ошибка:', error);
-        console.log('Полученный URL:', data?.signedUrl);
-        
-        if (error) {
-            console.error(`Ошибка получения signed URL:`, error);
+        if (!imageName) {
+            console.log('imageName пустой, возвращаю null');
             return null;
         }
         
-        return data.signedUrl;
-    } catch (error) {
-        console.error('Ошибка при создании signed URL:', error);
-        return null;
-    }
+        try {
+            const { data, error } = await supabaseClient
+                .storage
+                .from('images')
+                .createSignedUrl(imageName, 3600, {
+                    transform: {
+                        width: width,
+                        quality: quality,
+                        resize: 'contain'
+                    }
+                });
+            
+            if (error) {
+                console.error(`Ошибка получения signed URL:`, error);
+                return null;
+            }
+            
+            return data.signedUrl;
+        } catch (error) {
+            console.error('Ошибка при создании signed URL:', error);
+            return null;
+        }
 }
 
     // Загрузка программы и её контента
@@ -135,8 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Рендеринг страницы программы
 async function renderProgramPage(program, contents, mainImageUrl) {
     console.log('=== renderProgramPage ВЫЗВАНА ===');
-    console.log('Программа:', program?.title);
-    console.log('Контентов:', contents?.length);
     
     const container = document.getElementById('program-page-container');
     
@@ -145,70 +139,70 @@ async function renderProgramPage(program, contents, mainImageUrl) {
     
     // Обрабатываем динамический контент
     // Обрабатываем динамический контент с группировкой картинок
-let dynamicContentHtml = '';
-let imageBuffer = []; // буфер для картинок, идущих подряд
+    let dynamicContentHtml = '';
+    let imageBuffer = []; // буфер для картинок, идущих подряд
 
-for (let i = 0; i < contents.length; i++) {
-    const item = contents[i];
-    console.log(`Обработка ${i}:`, item.content_type);
-    
-    if (item.content_type === 'text') {
+    for (let i = 0; i < contents.length; i++) {
+        const item = contents[i];
+        // console.log(`Обработка ${i}:`, item.content_type);
         
-        console.log(`  → Текст: "${item.content_text}"`);
-        console.log(`  → Длина текста: ${item.content_text?.length}`);
+        if (item.content_type === 'text') {
+            
+            // console.log(`  → Текст: "${item.content_text}"`);
+            // console.log(`  → Длина текста: ${item.content_text?.length}`);
+            
+            // Если есть накопленные картинки в буфере — сначала выводим их
+            if (imageBuffer.length > 0) {
+                dynamicContentHtml += renderImageGroup(imageBuffer);
+                imageBuffer = [];
+            }
+            
+            // Выводим текст (ТОЛЬКО ОДИН РАЗ)
+            dynamicContentHtml += `
+                <div class="content-block text-block" data-delay="${i * 0.1}">
+                    <p class="text">${escapeHtml(item.content_text || 'ПУСТОЙ ТЕКСТ')}</p>
+                </div>
+            `;
+            // console.log(`  → Добавлен текст`);
+            
+        } else if (item.content_type === 'image') {
+            // Получаем signed URL для картинки
+            let imageUrl = '';
+            if (item.image_url) {
+                imageUrl = await getSignedImageUrl(item.image_url, 600, 80);
+            }
+            
+            // Добавляем в буфер
+            imageBuffer.push({
+                url: imageUrl,
+                alt: item.alt || 'Изображение программы'
+            });
+        }
+    }
+
+    // Выводим оставшиеся картинки после цикла
+    if (imageBuffer.length > 0) {
+        dynamicContentHtml += renderImageGroup(imageBuffer);
+    }
+
+    // Функция для отрисовки группы картинок
+    function renderImageGroup(images) {
+        let imagesHtml = '';
         
-        // Если есть накопленные картинки в буфере — сначала выводим их
-        if (imageBuffer.length > 0) {
-            dynamicContentHtml += renderImageGroup(imageBuffer);
-            imageBuffer = [];
+        for (let i = 0; i < images.length; i++) {
+            imagesHtml += `
+                <div class="image-wrapper-half">
+                    <img src="${images[i].url}" alt="${images[i].alt}">
+                </div>
+            `;
         }
         
-        // Выводим текст (ТОЛЬКО ОДИН РАЗ)
-        dynamicContentHtml += `
-            <div class="content-block text-block" data-delay="${i * 0.1}">
-                <p class="text">${escapeHtml(item.content_text || 'ПУСТОЙ ТЕКСТ')}</p>
-            </div>
-        `;
-        console.log(`  → Добавлен текст`);
-        
-    } else if (item.content_type === 'image') {
-        // Получаем signed URL для картинки
-        let imageUrl = '';
-        if (item.image_url) {
-            imageUrl = await getSignedImageUrl(item.image_url, 600, 80);
-        }
-        
-        // Добавляем в буфер
-        imageBuffer.push({
-            url: imageUrl,
-            alt: item.alt || 'Изображение программы'
-        });
-    }
-}
-
-// Выводим оставшиеся картинки после цикла
-if (imageBuffer.length > 0) {
-    dynamicContentHtml += renderImageGroup(imageBuffer);
-}
-
-// Функция для отрисовки группы картинок
-function renderImageGroup(images) {
-    let imagesHtml = '';
-    
-    for (let i = 0; i < images.length; i++) {
-        imagesHtml += `
-            <div class="image-wrapper-half">
-                <img src="${images[i].url}" alt="${images[i].alt}">
+        return `
+            <div class="content-block images-block">
+                ${imagesHtml}
             </div>
         `;
     }
-    
-    return `
-        <div class="content-block images-block">
-            ${imagesHtml}
-        </div>
-    `;
-}
     
     // Собираем полный HTML страницы
     const pageHtml = `
@@ -298,32 +292,32 @@ function renderImageGroup(images) {
         </div>
     `;
     
-    container.innerHTML = pageHtml;
-    console.log('=== РЕНДЕРИНГ ЗАВЕРШЕН ===');
-    
-    // Устанавливаем заголовок страницы
-    const titleElement = document.getElementById('page-title');
-    if (titleElement) {
-        titleElement.textContent = `${program.title} | Центр туризма`;
-    }
-    
-    // Запускаем анимации
-    animateTitle();
-    initScrollAnimation();
-    initForm();
-    initScrollToTop();
+        container.innerHTML = pageHtml;
+        // console.log('=== РЕНДЕРИНГ ЗАВЕРШЕН ===');
+        
+        // Устанавливаем заголовок страницы
+        const titleElement = document.getElementById('page-title');
+        if (titleElement) {
+            titleElement.textContent = `${program.title} | Центр туризма`;
+        }
+        
+        // Запускаем анимации
+        // animateTitle();
+        initScrollAnimation();
+        initForm();
+        initScrollToTop();
 }
     
-    // Анимация печатной машинки для заголовка
-    function animateTitle() {
-        const titleElement = document.querySelector('.headline2-block-program .h2');
-        if (!titleElement) return;
+    // // Анимация печатной машинки для заголовка
+    // function animateTitle() {
+    //     const titleElement = document.querySelector('.headline2-block-program .h2');
+    //     if (!titleElement) return;
         
-        const textLength = titleElement.textContent.length;
-        titleElement.style.animation = `typewriter 3s steps(${textLength}, end) 0.3s forwards`;
-        titleElement.style.width = '0';
-        titleElement.style.opacity = '1';
-    }
+    //     const textLength = titleElement.textContent.length;
+    //     titleElement.style.animation = `typewriter 3s steps(${textLength}, end) 0.3s forwards`;
+    //     titleElement.style.width = '0';
+    //     titleElement.style.opacity = '1';
+    // }
     
     // Анимация появления блоков при скролле
     function initScrollAnimation() {
